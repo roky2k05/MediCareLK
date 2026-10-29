@@ -1,0 +1,215 @@
+<mxfile host="app.diagrams.net" agent="Antigravity">
+  <diagram id="medicare_schemas" name="Normalized Relational Schemas">
+    <mxGraphModel dx="2751" dy="1331" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="schema_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" value="&lt;div style=&quot;font-family: &#39;Times New Roman&#39;, serif; font-size: 26px; font-weight: bold; color: #1E293B;&quot;&gt;Normalized Relational Schemas&lt;/div&gt;&lt;div style=&quot;font-family: Arial, sans-serif; font-size: 11px; color: #64748B; margin-top: 3px;&quot;&gt;MediCare LK - Third Normal Form (3NF) Relational Database Schema &amp;amp; Referential Integrity&lt;/div&gt;" vertex="1">
+          <mxGeometry height="45" width="750" x="60" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_tbl_user" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#0F172A;" value="&lt;b&gt;User&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="200" x="60" y="78" as="geometry" />
+        </mxCell>
+        <mxCell id="u_pk" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;u&gt;User_ID&lt;/u&gt;" vertex="1">
+          <mxGeometry height="34" width="90" x="60" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="u_name" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Name" vertex="1">
+          <mxGeometry height="34" width="90" x="150" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="u_email" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Email" vertex="1">
+          <mxGeometry height="34" width="110" x="240" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="u_phone" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Phone" vertex="1">
+          <mxGeometry height="34" width="90" x="350" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="u_nic" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="NIC" vertex="1">
+          <mxGeometry height="34" width="85" x="440" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="u_blood" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Blood_Group" vertex="1">
+          <mxGeometry height="34" width="95" x="525" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="u_addr" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Address" vertex="1">
+          <mxGeometry height="34" width="110" x="620" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_tbl_spec" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#0F172A;" value="&lt;b&gt;Specialization&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="200" x="60" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="s_pk" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;u&gt;Specialization_ID&lt;/u&gt;" vertex="1">
+          <mxGeometry height="34" width="130" x="60" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="s_name" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Name" vertex="1">
+          <mxGeometry height="34" width="100" x="190" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="s_icon" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Icon_URL" vertex="1">
+          <mxGeometry height="34" width="100" x="290" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="s_desc" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Description" vertex="1">
+          <mxGeometry height="34" width="120" x="390" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_tbl_doc" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#0F172A;" value="&lt;b&gt;Doctor&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="200" x="60" y="278" as="geometry" />
+        </mxCell>
+        <mxCell id="d_pk" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;u&gt;Doctor_ID&lt;/u&gt;" vertex="1">
+          <mxGeometry height="34" width="90" x="60" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="d_fk_spec" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;span style=&#39;border-bottom: 1px dashed black;&#39;&gt;Specialization_ID&lt;/span&gt;" vertex="1">
+          <mxGeometry height="34" width="130" x="150" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="d_name" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Name" vertex="1">
+          <mxGeometry height="34" width="90" x="280" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="d_qual" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Qualification" vertex="1">
+          <mxGeometry height="34" width="95" x="370" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="d_exp" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Experience" vertex="1">
+          <mxGeometry height="34" width="85" x="465" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="d_fee" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Fee" vertex="1">
+          <mxGeometry height="34" width="75" x="550" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="d_hosp" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Hospital" vertex="1">
+          <mxGeometry height="34" width="95" x="625" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="d_city" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="City" vertex="1">
+          <mxGeometry height="34" width="75" x="720" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_tbl_slot" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#0F172A;" value="&lt;b&gt;Doctor_Time_Slot&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="200" x="60" y="398" as="geometry" />
+        </mxCell>
+        <mxCell id="sl_fk_doc" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;span style=&#39;border-bottom: 1px dashed black;&#39;&gt;Doctor_ID&lt;/span&gt;" vertex="1">
+          <mxGeometry height="34" width="90" x="60" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="sl_day" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;u&gt;Day_Of_Week&lt;/u&gt;" vertex="1">
+          <mxGeometry height="34" width="100" x="150" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="sl_time" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;u&gt;Time_Slot&lt;/u&gt;" vertex="1">
+          <mxGeometry height="34" width="100" x="250" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_tbl_hosp_branch" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#0F172A;" value="&lt;b&gt;Doctor_Hospital_Branch&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="200" x="60" y="518" as="geometry" />
+        </mxCell>
+        <mxCell id="hb_fk_doc" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;span style=&#39;border-bottom: 1px dashed black;&#39;&gt;Doctor_ID&lt;/span&gt;" vertex="1">
+          <mxGeometry height="34" width="90" x="60" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="hb_name" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;u&gt;Branch_Name&lt;/u&gt;" vertex="1">
+          <mxGeometry height="34" width="110" x="150" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="hb_city" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="City" vertex="1">
+          <mxGeometry height="34" width="85" x="260" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_tbl_appt" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#0F172A;" value="&lt;b&gt;Appointment&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="200" x="60" y="638" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pk" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;u&gt;Appointment_ID&lt;/u&gt;" vertex="1">
+          <mxGeometry height="34" width="115" x="60" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="a_ref" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Reference_No" vertex="1">
+          <mxGeometry height="34" width="105" x="175" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="a_fk_u" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;span style=&#39;border-bottom: 1px dashed black;&#39;&gt;User_ID&lt;/span&gt;" vertex="1">
+          <mxGeometry height="34" width="85" x="280" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="a_fk_d" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;span style=&#39;border-bottom: 1px dashed black;&#39;&gt;Doctor_ID&lt;/span&gt;" vertex="1">
+          <mxGeometry height="34" width="85" x="365" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="a_date" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Appointment_Date" vertex="1">
+          <mxGeometry height="34" width="115" x="450" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="a_slot" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Time_Slot" vertex="1">
+          <mxGeometry height="34" width="85" x="565" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="a_mode" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Consultation_Type" vertex="1">
+          <mxGeometry height="34" width="115" x="650" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="a_fee" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Total_Fee" vertex="1">
+          <mxGeometry height="34" width="85" x="765" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="a_status" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Status" vertex="1">
+          <mxGeometry height="34" width="75" x="850" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pname" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Patient_Name" vertex="1">
+          <mxGeometry height="34" width="95" x="925" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="a_created" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Created_At" vertex="1">
+          <mxGeometry height="34" width="85" x="1020" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_tbl_notif" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#0F172A;" value="&lt;b&gt;Notification&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="200" x="60" y="758" as="geometry" />
+        </mxCell>
+        <mxCell id="n_pk" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;u&gt;Notification_ID&lt;/u&gt;" vertex="1">
+          <mxGeometry height="34" width="110" x="60" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="n_fk_u" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;span style=&#39;border-bottom: 1px dashed black;&#39;&gt;User_ID&lt;/span&gt;" vertex="1">
+          <mxGeometry height="34" width="85" x="170" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="n_fk_a" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="&lt;span style=&#39;border-bottom: 1px dashed black;&#39;&gt;Appointment_ID&lt;/span&gt;" vertex="1">
+          <mxGeometry height="34" width="115" x="255" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="n_title" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Title" vertex="1">
+          <mxGeometry height="34" width="85" x="370" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="n_message" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Message" vertex="1">
+          <mxGeometry height="34" width="100" x="455" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="n_date" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Date" vertex="1">
+          <mxGeometry height="34" width="75" x="555" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="n_read" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1;fontFamily=Arial;fontSize=11;fontColor=#0F172A;align=center;" value="Is_Read" vertex="1">
+          <mxGeometry height="34" width="70" x="630" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="ref_doc_spec" edge="1" parent="1" source="d_fk_spec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.2;endArrow=classic;endFill=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="s_pk" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ref_slot_doc" edge="1" parent="1" source="sl_fk_doc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.2;endArrow=classic;endFill=1;exitX=0.2;exitY=0;entryX=0.2;entryY=1;" target="d_pk" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="60" y="419.81" />
+              <mxPoint x="60" y="333.69" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ref_branch_doc" edge="1" parent="1" source="hb_fk_doc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.2;endArrow=classic;endFill=1;exitX=0;exitY=0.5;entryX=0;entryY=0.588;exitDx=0;exitDy=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="d_pk" value="">
+          <mxGeometry relative="1" x="0.0117" as="geometry">
+            <Array as="points">
+              <mxPoint x="50" y="557" />
+              <mxPoint x="50" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ref_appt_user" edge="1" parent="1" source="a_fk_u" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.2;endArrow=classic;endFill=1;entryX=0.5;entryY=1;exitX=0.463;exitY=-0.026;exitDx=0;exitDy=0;exitPerimeter=0;entryDx=0;entryDy=0;" target="u_pk" value="">
+          <mxGeometry relative="1" x="0.0275" as="geometry">
+            <Array as="points">
+              <mxPoint x="321.6" y="659.1" />
+              <mxPoint x="321.6" y="630" />
+              <mxPoint x="40" y="630" />
+              <mxPoint x="40" y="150" />
+              <mxPoint x="105" y="150" />
+            </Array>
+            <mxPoint x="330" y="640" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ref_appt_doc" edge="1" parent="1" source="a_fk_d" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.2;endArrow=classic;endFill=1;exitX=0.5;exitY=0;entryX=0.8;entryY=1;exitDx=0;exitDy=0;" target="d_pk" value="">
+          <mxGeometry relative="1" x="0.0016" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="660" />
+              <mxPoint x="410" y="380" />
+              <mxPoint x="132" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ref_notif_user" edge="1" parent="1" source="n_fk_u" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.2;endArrow=classic;endFill=1;exitX=0.5;exitY=0;entryX=0;entryY=0.5;exitDx=0;exitDy=0;" target="u_pk" value="">
+          <mxGeometry relative="1" x="0.0274" as="geometry">
+            <Array as="points">
+              <mxPoint x="212.5" y="750" />
+              <mxPoint x="20" y="750" />
+              <mxPoint x="20" y="117" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ref_notif_appt" edge="1" parent="1" source="n_fk_a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.2;endArrow=classic;endFill=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="a_pk" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

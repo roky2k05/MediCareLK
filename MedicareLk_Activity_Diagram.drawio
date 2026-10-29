@@ -1,0 +1,460 @@
+<mxfile host="app.diagrams.net" agent="Antigravity">
+  <diagram id="medicare_activity" name="Activity Diagram">
+    <mxGraphModel dx="761" dy="368" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1950" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="line_auth" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;dashPattern=6 6;strokeColor=#CBD5E1;strokeWidth=1.5;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="40" y="220" as="sourcePoint" />
+            <mxPoint x="1160" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_auth" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#475569;fontFamily=Arial;" value="&lt;b&gt;AUTH&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="80" x="45" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="line_main" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;dashPattern=6 6;strokeColor=#CBD5E1;strokeWidth=1.5;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="40" y="620" as="sourcePoint" />
+            <mxPoint x="1160" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_main" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#475569;fontFamily=Arial;" value="&lt;b&gt;MAIN APP&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="90" x="45" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="line_bg" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;dashPattern=6 6;strokeColor=#CBD5E1;strokeWidth=1.5;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="40" y="1640" as="sourcePoint" />
+            <mxPoint x="1160" y="1640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_bg" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#475569;fontFamily=Arial;" value="&lt;b&gt;BACKGROUND&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="110" x="45" y="1615" as="geometry" />
+        </mxCell>
+        <mxCell id="line_exit" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;dashPattern=6 6;strokeColor=#CBD5E1;strokeWidth=1.5;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="30" y="1794" as="sourcePoint" />
+            <mxPoint x="1150" y="1794" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="node_start" parent="1" style="ellipse;fillColor=#1E293B;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="24" width="24" x="338" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="act_splash" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D9E8FB;strokeColor=#6C8EBF;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="&lt;b&gt;Splash screen&lt;/b&gt;" vertex="1">
+          <mxGeometry height="36" width="160" x="270" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_logged_in" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=1.2;fontFamily=Arial;fontSize=10.5;fontColor=#0F172A;" value="Logged in?" vertex="1">
+          <mxGeometry height="40" width="90" x="305" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="act_enter_creds" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D9E8FB;strokeColor=#6C8EBF;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Enter email &amp;amp; password" vertex="1">
+          <mxGeometry height="36" width="190" x="255" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="act_validate_inputs" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Validate inputs" vertex="1">
+          <mxGeometry height="34" width="160" x="270" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_valid" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=1.2;fontFamily=Arial;fontSize=10.5;fontColor=#0F172A;" value="Valid?" vertex="1">
+          <mxGeometry height="36" width="70" x="315" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="act_show_field_err" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Show field error" vertex="1">
+          <mxGeometry height="34" width="130" x="110" y="376" as="geometry" />
+        </mxCell>
+        <mxCell id="act_firebase_auth" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="&lt;b&gt;Firebase signInWithEmail&lt;/b&gt;" vertex="1">
+          <mxGeometry height="38" width="190" x="255" y="469" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_auth_success" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=1.2;fontFamily=Arial;fontSize=10.5;fontColor=#0F172A;" value="Auth success?" vertex="1">
+          <mxGeometry height="40" width="90" x="305" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="act_toast_fail" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Toast: auth failed" vertex="1">
+          <mxGeometry height="34" width="130" x="110" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="act_register" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="&lt;b&gt;Register screen&lt;/b&gt;&lt;br/&gt;(name, email, phone, pwd)" vertex="1">
+          <mxGeometry height="44" width="180" x="575" y="241" as="geometry" />
+        </mxCell>
+        <mxCell id="act_create_user" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Create Firebase user&lt;br/&gt;+ save to Realtime DB &amp;amp; SQLite" vertex="1">
+          <mxGeometry height="46" width="180" x="575" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="act_home" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D9E8FB;strokeColor=#6C8EBF;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="&lt;b&gt;Home screen&lt;/b&gt;&lt;br/&gt;(featured doctors + lab tests + stats)" vertex="1">
+          <mxGeometry height="42" width="200" x="250" y="645" as="geometry" />
+        </mxCell>
+        <mxCell id="act_bottom_nav" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;fontStyle=1;" value="Bottom Nav: Home(Doctors) &amp;bull; Book &amp;bull; Bookings &amp;bull; Profile" vertex="1">
+          <mxGeometry height="32" width="360" x="170" y="715" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_col_browse" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" value="&lt;b style=&#39;color:#6E2D91;&#39;&gt;BROWSE&lt;/b&gt;" vertex="1">
+          <mxGeometry height="18" width="90" x="60" y="765" as="geometry" />
+        </mxCell>
+        <mxCell id="act_doc_directory" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Doctor directory screen" vertex="1">
+          <mxGeometry height="34" width="150" x="30" y="788" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_search_query" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=1.2;fontFamily=Arial;fontSize=10.5;fontColor=#0F172A;" value="Search?" vertex="1">
+          <mxGeometry height="36" width="80" x="65" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="act_load_all_docs" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Load all doctors" vertex="1">
+          <mxGeometry height="32" width="85" x="15" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="act_filter_results" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="search results" vertex="1">
+          <mxGeometry height="32" width="105" x="110" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="act_select_doc" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Select doctor" vertex="1">
+          <mxGeometry height="32" width="100" x="55" y="948" as="geometry" />
+        </mxCell>
+        <mxCell id="act_doc_detail" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Doctor detail&lt;br/&gt;(fee, hospital, rating)" vertex="1">
+          <mxGeometry height="40" width="130" x="40" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="act_goto_book" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Book consultation" vertex="1">
+          <mxGeometry height="30" width="120" x="45" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_col_book" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" value="&lt;b style=&#39;color:#D79B00;&#39;&gt;BOOKING&lt;/b&gt;" vertex="1">
+          <mxGeometry height="18" width="90" x="350" y="765" as="geometry" />
+        </mxCell>
+        <mxCell id="act_book_form" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="&lt;b&gt;Book appointment form&lt;/b&gt;" vertex="1">
+          <mxGeometry height="34" width="150" x="320" y="788" as="geometry" />
+        </mxCell>
+        <mxCell id="act_config_order" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Configure booking&lt;br/&gt;(patient info, symptoms/notes)" vertex="1">
+          <mxGeometry height="38" width="160" x="315" y="846" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_consult_mode" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=1.2;fontFamily=Arial;fontSize=10.5;fontColor=#0F172A;" value="Consultation type?" vertex="1">
+          <mxGeometry height="38" width="100" x="345" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="act_mode_clinic" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="In-Person Clinic selected" vertex="1">
+          <mxGeometry height="34" width="125" x="255" y="966" as="geometry" />
+        </mxCell>
+        <mxCell id="act_mode_video" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Video Telemedicine selected" vertex="1">
+          <mxGeometry height="34" width="135" x="420" y="966" as="geometry" />
+        </mxCell>
+        <mxCell id="act_pick_date_slot" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Pick calendar date &amp;amp;&lt;br/&gt;available time slot chip" vertex="1">
+          <mxGeometry height="40" width="160" x="315" y="1010" as="geometry" />
+        </mxCell>
+        <mxCell id="act_calc_fee" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Calculate total fee" vertex="1">
+          <mxGeometry height="38" width="160" x="315" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="act_submit_db" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="&lt;b&gt;Submit appointment to&lt;br/&gt;SQLite &amp;amp; Firebase RTDB&lt;/b&gt;" vertex="1">
+          <mxGeometry height="44" width="170" x="310" y="1130" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_saved" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=1.2;fontFamily=Arial;fontSize=10.5;fontColor=#0F172A;" value="Saved?" vertex="1">
+          <mxGeometry height="36" width="70" x="360" y="1195" as="geometry" />
+        </mxCell>
+        <mxCell id="act_booking_err" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Show error / retry" vertex="1">
+          <mxGeometry height="34" width="105" x="500" y="1197" as="geometry" />
+        </mxCell>
+        <mxCell id="act_push_notif" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Push notification: order / booking placed" vertex="1">
+          <mxGeometry height="34" width="210" x="290" y="1274" as="geometry" />
+        </mxCell>
+        <mxCell id="EaL6X1Pp_plPb59T0FSM-2" edge="1" parent="1" source="act_show_receipt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="act_workmanager">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="act_show_receipt" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D9E8FB;strokeColor=#6C8EBF;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Booking confirmation receipt" vertex="1">
+          <mxGeometry height="38" width="200" x="295" y="1350" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_col_orders" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" value="&lt;b style=&#39;color:#27AE60;&#39;&gt;BOOKINGS&lt;/b&gt;" vertex="1">
+          <mxGeometry height="18" width="90" x="625" y="765" as="geometry" />
+        </mxCell>
+        <mxCell id="act_orders_list" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="&lt;b&gt;My bookings list&lt;/b&gt;&lt;br/&gt;(Upcoming, Completed, Cancelled)" vertex="1">
+          <mxGeometry height="38" width="170" x="585" y="788" as="geometry" />
+        </mxCell>
+        <mxCell id="act_tap_order" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Tap an appointment card" vertex="1">
+          <mxGeometry height="32" width="140" x="600" y="846" as="geometry" />
+        </mxCell>
+        <mxCell id="act_order_detail" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Appointment detail&lt;br/&gt;(status, specs, total)" vertex="1">
+          <mxGeometry height="38" width="150" x="595" y="898" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_can_manage" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=1.2;fontFamily=Arial;fontSize=10.5;fontColor=#0F172A;" value="Upcoming &amp;amp;&lt;br/&gt;active?" vertex="1">
+          <mxGeometry height="55" width="90" x="625" y="954" as="geometry" />
+        </mxCell>
+        <mxCell id="act_manage_choice" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Reschedule / Cancel booking" vertex="1">
+          <mxGeometry height="34" width="150" x="595" y="1026" as="geometry" />
+        </mxCell>
+        <mxCell id="act_track_order" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="View consultation record" vertex="1">
+          <mxGeometry height="38" width="140" x="600" y="1090" as="geometry" />
+        </mxCell>
+        <mxCell id="act_notif_status" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Notify on status change" vertex="1">
+          <mxGeometry height="30" width="130" x="605" y="1150" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_col_profile" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" value="&lt;b style=&#39;color:#C0392B;&#39;&gt;PROFILE&lt;/b&gt;" vertex="1">
+          <mxGeometry height="18" width="90" x="860" y="765" as="geometry" />
+        </mxCell>
+        <mxCell id="act_profile_screen" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="&lt;b&gt;Profile screen&lt;/b&gt;" vertex="1">
+          <mxGeometry height="34" width="150" x="830" y="788" as="geometry" />
+        </mxCell>
+        <mxCell id="act_edit_profile" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Edit profile&lt;br/&gt;(name, phone, photo)" vertex="1">
+          <mxGeometry height="38" width="115" x="790" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="act_logout" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="&lt;b&gt;Logout&lt;/b&gt;" vertex="1">
+          <mxGeometry height="32" width="70" x="920" y="897" as="geometry" />
+        </mxCell>
+        <mxCell id="act_edit_address" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Edit medical info&lt;br/&gt;(allergies, conditions)" vertex="1">
+          <mxGeometry height="38" width="125" x="1005" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="act_save_prof_db" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Save to Firebase" vertex="1">
+          <mxGeometry height="28" width="105" x="795" y="958" as="geometry" />
+        </mxCell>
+        <mxCell id="act_firebase_signout" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Firebase signOut&lt;br/&gt;&amp;rarr; Back to Login" vertex="1">
+          <mxGeometry height="36" width="90" x="910" y="954" as="geometry" />
+        </mxCell>
+        <mxCell id="act_save_med_db" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Save to Firebase" vertex="1">
+          <mxGeometry height="28" width="105" x="1015" y="958" as="geometry" />
+        </mxCell>
+        <mxCell id="act_workmanager" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="&lt;b&gt;WorkManager: ReminderWorker&lt;/b&gt;&lt;br/&gt;(periodic sync / upcoming alert every 24h)" vertex="1">
+          <mxGeometry height="44" width="220" x="285" y="1670" as="geometry" />
+        </mxCell>
+        <mxCell id="act_bg_push" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.2;fontFamily=Arial;fontSize=11;fontColor=#0F172A;" value="Push: appointment reminder / wellness notification" vertex="1">
+          <mxGeometry height="34" width="220" x="285" y="1750" as="geometry" />
+        </mxCell>
+        <mxCell id="node_final" parent="1" style="ellipse;html=1;shape=endState;fillColor=#1E293B;strokeColor=#1E293B;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="24" width="24" x="383" y="1870" as="geometry" />
+        </mxCell>
+        <mxCell id="e_start_splash" edge="1" parent="1" source="node_start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_splash" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_splash_dec" edge="1" parent="1" source="act_splash" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="dec_logged_in" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_logged_no" edge="1" parent="1" source="dec_logged_in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_enter_creds" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_logged_yes" edge="1" parent="1" source="dec_logged_in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=0;exitY=0.5;entryX=0;entryY=0.5;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="act_home" value="Yes">
+          <mxGeometry relative="1" x="0.049" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="180" />
+              <mxPoint x="20" y="666" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_creds_val" edge="1" parent="1" source="act_enter_creds" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_validate_inputs" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_val_dec" edge="1" parent="1" source="act_validate_inputs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="dec_valid" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_valid_no" edge="1" parent="1" source="dec_valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_show_field_err" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_err_loop" edge="1" parent="1" source="act_show_field_err" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=0;exitY=0.5;entryX=0;entryY=0.5;exitDx=0;exitDy=0;" target="act_enter_creds" value="">
+          <mxGeometry relative="1" x="-0.1522" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="393" />
+              <mxPoint x="80" y="263" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_valid_yes" edge="1" parent="1" source="dec_valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_firebase_auth" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_auth_dec" edge="1" parent="1" source="act_firebase_auth" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="dec_auth_success" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_auth_fail" edge="1" parent="1" source="dec_auth_success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_toast_fail" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_fail_loop" edge="1" parent="1" source="act_toast_fail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=0;exitY=0.5;entryX=0;entryY=0.5;exitDx=0;exitDy=0;" target="act_enter_creds" value="">
+          <mxGeometry relative="1" x="-0.1111" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="490" />
+              <mxPoint x="80" y="263" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_auth_ok" edge="1" parent="1" source="dec_auth_success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_home" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_no_account" edge="1" parent="1" source="act_enter_creds" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_register" value="No account?">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_reg_create" edge="1" parent="1" source="act_register" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_create_user" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_create_home" edge="1" parent="1" source="act_create_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=0.5;exitY=1;" target="act_home" value="">
+          <mxGeometry relative="1" x="-0.0021" as="geometry">
+            <Array as="points">
+              <mxPoint x="665" y="666" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_home_nav" edge="1" parent="1" source="act_home" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_bottom_nav" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_nav_browse" edge="1" parent="1" source="act_bottom_nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=0.1;exitY=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="act_doc_directory" value="">
+          <mxGeometry relative="1" x="0.3589" as="geometry" />
+        </mxCell>
+        <mxCell id="e_nav_book" edge="1" parent="1" source="act_bottom_nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=0.4;exitY=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="act_book_form" value="">
+          <mxGeometry relative="1" x="0.4438" as="geometry" />
+        </mxCell>
+        <mxCell id="e_nav_orders" edge="1" parent="1" source="act_bottom_nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="act_orders_list" value="">
+          <mxGeometry relative="1" x="-0.3522" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="731" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_nav_profile" edge="1" parent="1" source="act_bottom_nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=1;exitY=0.5;entryX=0.5;entryY=0;exitDx=0;exitDy=0;" target="act_profile_screen" value="">
+          <mxGeometry relative="1" x="-0.0783" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="730" />
+              <mxPoint x="905" y="730" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_dir_dec" edge="1" parent="1" source="act_doc_directory" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="dec_search_query" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_search_no" edge="1" parent="1" source="dec_search_query" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="act_load_all_docs" value="No">
+          <mxGeometry relative="1" x="0.2632" as="geometry">
+            <Array as="points">
+              <mxPoint x="45" y="858" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_search_yes" edge="1" parent="1" source="dec_search_query" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="act_filter_results" value="Yes">
+          <mxGeometry relative="1" x="-0.0459" as="geometry">
+            <Array as="points">
+              <mxPoint x="162.5" y="858" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_load_select" edge="1" parent="1" source="act_load_all_docs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="act_select_doc" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="35" y="964" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_filter_select" edge="1" parent="1" source="act_filter_results" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="act_select_doc" value="">
+          <mxGeometry relative="1" x="-0.2761" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="927" />
+              <mxPoint x="190" y="964" />
+            </Array>
+            <mxPoint x="215" y="948" as="sourcePoint" />
+            <mxPoint x="157.5" y="969" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_select_detail" edge="1" parent="1" source="act_select_doc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_doc_detail" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_detail_bookbtn" edge="1" parent="1" source="act_doc_detail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_goto_book" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_bookbtn_form" edge="1" parent="1" source="act_goto_book" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="act_book_form" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_form_config" edge="1" parent="1" source="act_book_form" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_config_order" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_config_mode" edge="1" parent="1" source="act_config_order" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="dec_consult_mode" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_mode_clinic" edge="1" parent="1" source="dec_consult_mode" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_mode_clinic" value="In-Person">
+          <mxGeometry relative="1" x="0.2137" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="317.5" y="930" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_mode_video" edge="1" parent="1" source="dec_consult_mode" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_mode_video" value="Telemedicine">
+          <mxGeometry relative="1" x="0.3459" y="3" as="geometry">
+            <mxPoint y="1" as="offset" />
+            <Array as="points">
+              <mxPoint x="487.5" y="929" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_clinic_slot" edge="1" parent="1" source="act_mode_clinic" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="act_pick_date_slot" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="295" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_video_slot" edge="1" parent="1" source="act_mode_video" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="act_pick_date_slot" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="495" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_slot_fee" edge="1" parent="1" source="act_pick_date_slot" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_calc_fee" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_fee_submit" edge="1" parent="1" source="act_calc_fee" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_submit_db" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_submit_saved" edge="1" parent="1" source="act_submit_db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="dec_saved" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_saved_fail" edge="1" parent="1" source="dec_saved" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_booking_err" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_saved_ok" edge="1" parent="1" source="dec_saved" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_push_notif" value="Yes">
+          <mxGeometry relative="1" x="-0.1163" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_notif_receipt" edge="1" parent="1" source="act_push_notif" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_show_receipt" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_orders_tap" edge="1" parent="1" source="act_orders_list" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_tap_order" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_tap_detail" edge="1" parent="1" source="act_tap_order" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_order_detail" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_detail_can" edge="1" parent="1" source="act_order_detail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="dec_can_manage" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_can_yes" edge="1" parent="1" source="dec_can_manage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_manage_choice" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_can_no" edge="1" parent="1" source="dec_can_manage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="act_track_order" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="770" y="975" />
+              <mxPoint x="770" y="1109" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_manage_loop" edge="1" parent="1" source="act_manage_choice" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" target="act_book_form" value="Edit &amp;rarr;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_track_notif" edge="1" parent="1" source="act_track_order" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_notif_status" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_prof_edit" edge="1" parent="1" source="act_profile_screen" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_edit_profile" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_prof_logout" edge="1" parent="1" source="act_profile_screen" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_logout" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_prof_addr" edge="1" parent="1" source="act_profile_screen" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_edit_address" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_save_prof" edge="1" parent="1" source="act_edit_profile" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_save_prof_db" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_logout_so" edge="1" parent="1" source="act_logout" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_firebase_signout" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_so_login" edge="1" parent="1" source="act_firebase_signout" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=0.5;exitY=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="act_enter_creds" value="Back to login">
+          <mxGeometry relative="1" x="-0.0715" as="geometry">
+            <Array as="points">
+              <mxPoint x="955" y="1040" />
+              <mxPoint x="1150" y="1040" />
+              <mxPoint x="1150" y="210" />
+              <mxPoint x="397.5" y="210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_save_med" edge="1" parent="1" source="act_edit_address" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_save_med_db" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_worker_push" edge="1" parent="1" source="act_workmanager" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;" target="act_bg_push" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_exit_final" edge="1" parent="1" source="act_bg_push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=1.2;fontFamily=Arial;fontSize=10;fontColor=#1E293B;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="node_final" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="395" y="1848" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

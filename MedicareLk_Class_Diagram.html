@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedicareLk - Class Diagram Preview</title>
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --model-color: #107C41;
+      --adapter-color: #1A5276;
+      --screen-color: #6E2D91;
+      --auth-color: #B45309;
+      --util-color: #66101F;
+      --border-color: #E2E8F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 1440px;
+      background: #FFFFFF;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid var(--border-color);
+    }
+
+    .header-banner {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .header-banner h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .header-banner p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .tier-section {
+      margin-bottom: 35px;
+      position: relative;
+    }
+
+    .tier-title {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .tier-title::before, .tier-title::after {
+      content: "";
+      height: 1px;
+      background: #CBD5E1;
+      flex: 1;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .class-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1.8px solid;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .class-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.09);
+    }
+
+    .card-header {
+      color: #FFFFFF;
+      padding: 8px 12px;
+      text-align: center;
+    }
+
+    .card-header .stereotype {
+      font-size: 10px;
+      font-style: italic;
+      opacity: 0.9;
+      margin-bottom: 2px;
+    }
+
+    .card-header .class-name {
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0.3px;
+    }
+
+    .card-body {
+      padding: 10px 12px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 11px;
+      line-height: 1.45;
+      color: #1E293B;
+    }
+
+    .divider {
+      border: none;
+      height: 1px;
+      margin: 0;
+      opacity: 0.5;
+    }
+
+    /* Colors by Tier */
+    .tier-model .card-header { background-color: var(--model-color); }
+    .tier-model .class-card { border-color: var(--model-color); }
+    .tier-model .divider { background-color: var(--model-color); }
+    .tier-model .tier-title { color: var(--model-color); }
+
+    .tier-adapter .card-header { background-color: var(--adapter-color); }
+    .tier-adapter .class-card { border-color: var(--adapter-color); }
+    .tier-adapter .divider { background-color: var(--adapter-color); }
+    .tier-adapter .tier-title { color: var(--adapter-color); }
+
+    .tier-screen .card-header { background-color: var(--screen-color); }
+    .tier-screen .class-card { border-color: var(--screen-color); }
+    .tier-screen .divider { background-color: var(--screen-color); }
+    .tier-screen .tier-title { color: var(--screen-color); }
+
+    .tier-auth .card-header { background-color: var(--auth-color); }
+    .tier-auth .class-card { border-color: var(--auth-color); }
+    .tier-auth .divider { background-color: var(--auth-color); }
+    .tier-auth .tier-title { color: var(--auth-color); }
+
+    .tier-util .card-header { background-color: var(--util-color); }
+    .tier-util .class-card { border-color: var(--util-color); }
+    .tier-util .divider { background-color: var(--util-color); }
+    .tier-util .tier-title { color: var(--util-color); }
+
+    .legend-box {
+      margin-top: 30px;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      font-size: 12px;
+      color: #334155;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-badge {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+    }
+
+    .badge-model { background: var(--model-color); }
+    .badge-adapter { background: var(--adapter-color); }
+    .badge-screen { background: var(--screen-color); }
+    .badge-auth { background: var(--auth-color); }
+    .badge-util { background: var(--util-color); }
+
+    .notes-box {
+      margin-top: 24px;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: #1E3A8A;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-banner">
+      <h1>MedicareLk &ndash; Class Diagram</h1>
+      <p>Complete Architecture: Models &bull; Adapters &bull; Feature Screens &bull; Auth &amp; Dashboard &bull; Database &amp; Utilities</p>
+    </div>
+
+    <!-- TIER 1: MODELS -->
+    <div class="tier-section tier-model">
+      <div class="tier-title">&bull; Models &bull;</div>
+      <div class="grid-4">
+        <!-- Doctor -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;models&raquo;</div>
+            <div class="class-name">Doctor</div>
+          </div>
+          <div class="card-body">
+            - id : int<br/>
+            - name : String<br/>
+            - specialization : String<br/>
+            - qualification : String<br/>
+            - experienceYears : int<br/>
+            - fee : double<br/>
+            - hospital : String<br/>
+            - city : String<br/>
+            - rating : double<br/>
+            - availableDays : String<br/>
+            - availableTimes : String<br/>
+            - about : String<br/>
+            - phone : String<br/>
+            - email : String
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + Doctor()<br/>
+            + Doctor(...)<br/>
+            + getters / setters (all fields)
+          </div>
+        </div>
+
+        <!-- Appointment -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;models&raquo;</div>
+            <div class="class-name">Appointment</div>
+          </div>
+          <div class="card-body">
+            - id : int<br/>
+            - referenceNo : String<br/>
+            - firebaseUid : String<br/>
+            - userEmail : String<br/>
+            - userId : int<br/>
+            - doctorId : int<br/>
+            - doctorName : String<br/>
+            - specialization : String<br/>
+            - hospital : String<br/>
+            - appointmentDate : String<br/>
+            - timeSlot : String<br/>
+            - consultationType : String<br/>
+            - patientName : String<br/>
+            - patientPhone : String<br/>
+            - notes : String<br/>
+            - fee : double<br/>
+            - status : String<br/>
+            - cancellationReason : String<br/>
+            - createdAt : String
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + Appointment()<br/>
+            + Appointment(...)<br/>
+            + getters / setters (all fields)
+          </div>
+        </div>
+
+        <!-- ServiceItem -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;models&raquo;</div>
+            <div class="class-name">ServiceItem</div>
+          </div>
+          <div class="card-body">
+            - id : int<br/>
+            - title : String<br/>
+            - category : String<br/>
+            - price : double<br/>
+            - description : String<br/>
+            - features : String<br/>
+            - hospital : String<br/>
+            - preparation : String<br/>
+            <span style="color:#64748B;">-- NotificationItem --</span><br/>
+            - notifId : int<br/>
+            - notifTitle : String<br/>
+            - notifMessage : String<br/>
+            - notifType : String<br/>
+            - isRead : int
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + ServiceItem()<br/>
+            + ServiceItem(...)<br/>
+            + getters / setters (all fields)
+          </div>
+        </div>
+
+        <!-- User -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;models&raquo;</div>
+            <div class="class-name">User</div>
+          </div>
+          <div class="card-body">
+            - id : int<br/>
+            - firebaseUid : String<br/>
+            - name : String<br/>
+            - email : String<br/>
+            - phone : String<br/>
+            - password : String<br/>
+            - nic : String<br/>
+            - dob : String<br/>
+            - gender : String<br/>
+            - bloodGroup : String<br/>
+            - address : String<br/>
+            - emergencyContactName : String<br/>
+            - emergencyContactPhone : String<br/>
+            - allergies : String<br/>
+            - chronicConditions : String<br/>
+            - medications : String<br/>
+            - createdAt : String
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + User()<br/>
+            + User(...)<br/>
+            + getters / setters (all fields)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIER 2: ADAPTERS -->
+    <div class="tier-section tier-adapter">
+      <div class="tier-title">&bull; Adapters &bull;</div>
+      <div class="grid-4">
+        <!-- DoctorAdapter -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;adapters&raquo;</div>
+            <div class="class-name">DoctorAdapter</div>
+          </div>
+          <div class="card-body">
+            - context : Context<br/>
+            - doctorList : List&lt;Doctor&gt;<br/>
+            - listener : OnDoctorClickListener
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreateViewHolder(p, vt) : ViewHolder<br/>
+            + onBindViewHolder(h, pos) : void<br/>
+            + getItemCount() : int<br/>
+            + updateList(newList) : void
+          </div>
+        </div>
+
+        <!-- AppointmentAdapter -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;adapters&raquo;</div>
+            <div class="class-name">AppointmentAdapter</div>
+          </div>
+          <div class="card-body">
+            - context : Context<br/>
+            - appointmentList : List&lt;Appointment&gt;<br/>
+            - listener : OnAppointmentActionListener
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreateViewHolder(p, vt) : ViewHolder<br/>
+            + onBindViewHolder(h, pos) : void<br/>
+            + getItemCount() : int<br/>
+            + updateList(newList) : void<br/>
+            - openDetails(appt) : void
+          </div>
+        </div>
+
+        <!-- ServiceAdapter -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;adapters&raquo;</div>
+            <div class="class-name">ServiceAdapter</div>
+          </div>
+          <div class="card-body">
+            - context : Context<br/>
+            - serviceList : List&lt;ServiceItem&gt;<br/>
+            - listener : OnServiceClickListener
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreateViewHolder(p, vt) : ViewHolder<br/>
+            + onBindViewHolder(h, pos) : void<br/>
+            + getItemCount() : int<br/>
+            + updateList(newList) : void
+          </div>
+        </div>
+
+        <!-- NotificationAdapter -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;adapters&raquo;</div>
+            <div class="class-name">NotificationAdapter</div>
+          </div>
+          <div class="card-body">
+            - context : Context<br/>
+            - notificationList : List&lt;NotificationItem&gt;<br/>
+            - listener : OnNotificationClickListener
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreateViewHolder(p, vt) : ViewHolder<br/>
+            + onBindViewHolder(h, pos) : void<br/>
+            + getItemCount() : int<br/>
+            + updateList(newList) : void
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIER 3: FEATURE SCREENS -->
+    <div class="tier-section tier-screen">
+      <div class="tier-title">&bull; Feature Screens &bull;</div>
+      <div class="grid-4">
+        <!-- DoctorListActivity -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;activities&raquo;</div>
+            <div class="class-name">DoctorListActivity</div>
+          </div>
+          <div class="card-body">
+            - databaseHelper : DatabaseHelper<br/>
+            - doctorAdapter : DoctorAdapter<br/>
+            - doctorList : List&lt;Doctor&gt;<br/>
+            - rvDoctors : RecyclerView<br/>
+            - etSearch : TextInputEditText<br/>
+            - spinnerSpecialization : Spinner
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreate(bundle) : void<br/>
+            + loadDoctors() : void<br/>
+            + filterDoctors(query, spec) : void<br/>
+            + onBookClick(doctor) : void<br/>
+            + onViewProfileClick(doctor) : void
+          </div>
+        </div>
+
+        <!-- BookAppointmentActivity -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;activities&raquo;</div>
+            <div class="class-name">BookAppointmentActivity</div>
+          </div>
+          <div class="card-body">
+            - databaseHelper : DatabaseHelper<br/>
+            - sessionManager : SessionManager<br/>
+            - firebaseHelper : FirebaseHelper<br/>
+            - doctor : Doctor<br/>
+            - selectedDate : String<br/>
+            - selectedTimeSlot : String<br/>
+            - etPatientName, etPatientPhone : EditText
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreate(bundle) : void<br/>
+            + showDatePicker() : void<br/>
+            + setupTimeSlots() : void<br/>
+            + confirmBooking() : void<br/>
+            + validateInput() : boolean
+          </div>
+        </div>
+
+        <!-- AppointmentsActivity -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;activities&raquo;</div>
+            <div class="class-name">AppointmentsActivity</div>
+          </div>
+          <div class="card-body">
+            - databaseHelper : DatabaseHelper<br/>
+            - sessionManager : SessionManager<br/>
+            - firebaseHelper : FirebaseHelper<br/>
+            - appointmentAdapter : AppointmentAdapter<br/>
+            - appointmentList : List&lt;Appointment&gt;<br/>
+            - tabLayoutAppointments : TabLayout<br/>
+            - currentStatus : String
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreate(bundle) : void<br/>
+            + loadAppointments() : void<br/>
+            + listenToFirebaseAppointments() : void<br/>
+            + onReschedule(appt) : void<br/>
+            + onCancel(appt) : void
+          </div>
+        </div>
+
+        <!-- ProfileActivity -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;activities&raquo;</div>
+            <div class="class-name">ProfileActivity</div>
+          </div>
+          <div class="card-body">
+            - databaseHelper : DatabaseHelper<br/>
+            - sessionManager : SessionManager<br/>
+            - firebaseHelper : FirebaseHelper<br/>
+            - currentUser : User<br/>
+            - etProfileName, etProfilePhone : EditText<br/>
+            - spinnerBloodGroup, spinnerGender : Spinner
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreate(bundle) : void<br/>
+            + loadUserProfile() : void<br/>
+            + saveProfileChanges() : void<br/>
+            + logoutUser() : void
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIER 4: AUTH & DASHBOARD -->
+    <div class="tier-section tier-auth">
+      <div class="tier-title">&bull; Activities (Auth &amp; Dashboard) &bull;</div>
+      <div class="grid-4">
+        <!-- LoginActivity -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;activities&raquo;</div>
+            <div class="class-name">LoginActivity</div>
+          </div>
+          <div class="card-body">
+            - databaseHelper : DatabaseHelper<br/>
+            - sessionManager : SessionManager<br/>
+            - firebaseHelper : FirebaseHelper<br/>
+            - tilEmailPhone, tilPassword : TextInputLayout<br/>
+            - etEmailPhone, etPassword : TextInputEditText<br/>
+            - btnLogin : MaterialButton
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreate(bundle) : void<br/>
+            + loginUser() : void<br/>
+            + showForgotPasswordDialog() : void<br/>
+            + syncUserFromFirebase(uid) : void
+          </div>
+        </div>
+
+        <!-- RegisterActivity -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;activities&raquo;</div>
+            <div class="class-name">RegisterActivity</div>
+          </div>
+          <div class="card-body">
+            - databaseHelper : DatabaseHelper<br/>
+            - sessionManager : SessionManager<br/>
+            - firebaseHelper : FirebaseHelper<br/>
+            - etFullName, etEmail, etPhone : EditText<br/>
+            - etRegPassword, etConfirmPassword : EditText<br/>
+            - cbTerms : CheckBox
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreate(bundle) : void<br/>
+            + registerUser() : void<br/>
+            + validateForm() : boolean<br/>
+            + createFirebaseAccount() : void
+          </div>
+        </div>
+
+        <!-- MainActivity -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;activities&raquo;</div>
+            <div class="class-name">MainActivity</div>
+          </div>
+          <div class="card-body">
+            - databaseHelper : DatabaseHelper<br/>
+            - sessionManager : SessionManager<br/>
+            - firebaseHelper : FirebaseHelper<br/>
+            - doctorAdapter : DoctorAdapter<br/>
+            - upcomingAppointment : Appointment<br/>
+            - rvTopDoctors : RecyclerView<br/>
+            - bottomNavigationView : BottomNavigationView
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreate(bundle) : void<br/>
+            + initViews() : void<br/>
+            + setupNavigation() : void<br/>
+            + loadUpcomingAppointment() : void<br/>
+            + listenToNotificationsRealtime() : void
+          </div>
+        </div>
+
+        <!-- AppointmentDetailActivity -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;activities&raquo;</div>
+            <div class="class-name">AppointmentDetailActivity</div>
+          </div>
+          <div class="card-body">
+            - databaseHelper : DatabaseHelper<br/>
+            - firebaseHelper : FirebaseHelper<br/>
+            - sessionManager : SessionManager<br/>
+            - appointment : Appointment<br/>
+            - tvRefNo, tvDoctorName, tvStatus : TextView<br/>
+            - btnReschedule, btnCancel : MaterialButton
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreate(bundle) : void<br/>
+            + loadAppointmentDetails() : void<br/>
+            + promptCancelAppointment() : void<br/>
+            + promptRescheduleAppointment() : void
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIER 5: DATABASE & UTILITIES -->
+    <div class="tier-section tier-util">
+      <div class="tier-title">&bull; Database &amp; Utilities &bull;</div>
+      <div class="grid-4">
+        <!-- DatabaseHelper -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;database&raquo;</div>
+            <div class="class-name">DatabaseHelper</div>
+          </div>
+          <div class="card-body">
+            - DATABASE_NAME : String = "medicare_lk.db"<br/>
+            - DATABASE_VERSION : int = 2<br/>
+            + TABLE_USERS, TABLE_DOCTORS : String<br/>
+            + TABLE_APPOINTMENTS, TABLE_SERVICES : String<br/>
+            + TABLE_NOTIFICATIONS, TABLE_HEALTH_TIPS : String
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + onCreate(db) : void<br/>
+            + registerUser(user) : long<br/>
+            + loginUser(emailOrPhone, pwd) : User<br/>
+            + getAllDoctors() : List&lt;Doctor&gt;<br/>
+            + bookAppointment(appt) : long<br/>
+            + getAppointmentsByUser(uid, stat) : List&lt;Appointment&gt;<br/>
+            + rescheduleAppointment(id, dt, slot) : boolean<br/>
+            + cancelAppointment(id, reason) : boolean
+          </div>
+        </div>
+
+        <!-- FirebaseHelper -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;database&raquo;</div>
+            <div class="class-name">FirebaseHelper</div>
+          </div>
+          <div class="card-body">
+            - instance : FirebaseHelper<br/>
+            - auth : FirebaseAuth<br/>
+            - databaseRef : DatabaseReference<br/>
+            - database : FirebaseDatabase
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + getInstance() : FirebaseHelper<br/>
+            + getCurrentUid() : String<br/>
+            + isUserLoggedIn() : boolean<br/>
+            + saveUserProfile(user, listener) : void<br/>
+            + saveAppointment(appt, listener) : void<br/>
+            + updateAppointmentStatus(...) : void<br/>
+            + rescheduleAppointment(...) : void<br/>
+            + listenToUserAppointments(uid, listener) : void<br/>
+            + seedCatalogIfEmpty(docs, serv, tips) : void
+          </div>
+        </div>
+
+        <!-- NotificationHelper -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;utility&raquo;</div>
+            <div class="class-name">NotificationHelper</div>
+          </div>
+          <div class="card-body">
+            + CHANNEL_ID : String = "medicare_channel"<br/>
+            + CHANNEL_NAME : String<br/>
+            + CHANNEL_DESC : String<br/>
+            - TAG : String = "NotificationHelper"
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + createNotificationChannel(ctx) : void<br/>
+            + showNotification(ctx, title, msg, id, intent) : void<br/>
+            + showAppointmentNotification(ctx, appt) : void
+          </div>
+        </div>
+
+        <!-- SessionManager -->
+        <div class="class-card">
+          <div class="card-header">
+            <div class="stereotype">&laquo;utility&raquo;</div>
+            <div class="class-name">SessionManager</div>
+          </div>
+          <div class="card-body">
+            - PREF_NAME : String = "MedicareLkSession"<br/>
+            - pref : SharedPreferences<br/>
+            - editor : SharedPreferences.Editor<br/>
+            - context : Context
+          </div>
+          <div class="divider"></div>
+          <div class="card-body">
+            + createLoginSession(uid, id, name, email, phone) : void<br/>
+            + isLoggedIn() : boolean<br/>
+            + getFirebaseUid() : String<br/>
+            + getUserId() : int<br/>
+            + getUserName() : String<br/>
+            + getUserEmail() : String<br/>
+            + updateUserInfo(name, phone) : void<br/>
+            + logoutUser() : void
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="legend-box">
+      <b style="font-size: 13px; color: #0F172A;">Legend:</b>
+      <div class="legend-item"><div class="legend-badge badge-model"></div> Model</div>
+      <div class="legend-item"><div class="legend-badge badge-adapter"></div> Adapter</div>
+      <div class="legend-item"><div class="legend-badge badge-screen"></div> Activity (Feature Screen)</div>
+      <div class="legend-item"><div class="legend-badge badge-auth"></div> Activity (Auth &amp; Core)</div>
+      <div class="legend-item"><div class="legend-badge badge-util"></div> Database &amp; Utility</div>
+      <div class="legend-item" style="margin-left: 20px; color: #64748B;">&mdash;&mdash; association</div>
+      <div class="legend-item" style="color: #64748B;">- - - - &gt; dependency (uses)</div>
+    </div>
+
+    <div class="notes-box">
+      <b>💡 How to open in Draw.io:</b><br/>
+      1. Open <a href="https://app.diagrams.net/" target="_blank">draw.io (diagrams.net)</a> in your browser.<br/>
+      2. Click <b>File &gt; Open From &gt; Device</b> and select the generated <code>MedicareLk_Class_Diagram.drawio</code> file located in your project root.<br/>
+      3. All components, colors, connectors, and stereotypes will be loaded with full editing capability!
+    </div>
+  </div>
+
+</body>
+</html>

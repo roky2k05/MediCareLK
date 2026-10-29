@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediCare LK - System Design &amp; Architecture Diagrams</title>
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --primary: #1E3A5F;
+      --primary-light: #2563EB;
+      --text: #0F172A;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --accent: #0D9488;
+      --radius: 12px;
+      --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header {
+      width: 100%;
+      max-width: 1300px;
+      background: linear-gradient(135deg, #1E3A5F 0%, #0F2038 100%);
+      color: white;
+      padding: 30px 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .header-text h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .header-text p {
+      font-size: 14px;
+      color: #94A3B8;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .tabs-nav {
+      width: 100%;
+      max-width: 1300px;
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      background: #E2E8F0;
+      padding: 6px;
+      border-radius: var(--radius);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px 18px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .tab-btn.active {
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    .main-card {
+      width: 100%;
+      max-width: 1300px;
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      margin-bottom: 30px;
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    .pane-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pane-title h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .pane-title p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .action-btn:hover {
+      background: #F1F5F9;
+    }
+
+    .action-btn.primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .action-btn.primary:hover {
+      background: #112642;
+    }
+
+    .diagram-container {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      background: #FFFFFF;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0F172A;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.25s ease;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-text">
+      <h1>MediCare LK &mdash; System Design &amp; Architecture</h1>
+      <p>Native Android Doctor Channeling &amp; Telemedicine System | draw.io Formatted Diagrams</p>
+    </div>
+    <div class="header-badge">
+      <span>&#9679;</span> 3 Validated draw.io Models Ready
+    </div>
+  </header>
+
+  <nav class="tabs-nav">
+    <button class="tab-btn active" onclick="switchTab('activity')">
+      <span>1. Activity Diagram</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('er')">
+      <span>2. ER Diagram</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('schema')">
+      <span>3. Normalized Relational Schemas</span>
+    </button>
+  </nav>
+
+  <!-- TAB 1: ACTIVITY DIAGRAM -->
+  <main id="pane-activity" class="main-card tab-pane active">
+    <div class="pane-toolbar">
+      <div class="pane-title">
+        <h2>Activity Diagram</h2>
+        <p>Complete authentication, bottom navigation, doctor channeling, booking, rescheduling &amp; background reminder flow</p>
+      </div>
+      <div class="btn-group">
+        <button class="action-btn" onclick="copyDrawioXml('MedicareLk_Activity_Diagram.drawio')">Copy draw.io XML</button>
+        <a class="action-btn primary" href="MedicareLk_Activity_Diagram.drawio" download>Download .drawio</a>
+      </div>
+    </div>
+    <div class="diagram-container">
+      <svg width="1050" height="1750" viewBox="0 0 1050 1750" xmlns="http://www.w3.org/2000/svg" style="font-family: Arial, sans-serif;">
+        <!-- Title -->
+        <text x="30" y="40" font-family="'Times New Roman', serif" font-size="26" font-weight="bold" fill="#1E293B">Activity Diagram</text>
+
+        <!-- Dashed Partition Lines -->
+        <!-- AUTH -->
+        <line x1="20" y1="190" x2="1030" y2="190" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="6,6" />
+        <text x="25" y="180" font-size="11" font-weight="bold" fill="#475569">AUTH</text>
+
+        <!-- MAIN APP -->
+        <line x1="20" y1="560" x2="1030" y2="560" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="6,6" />
+        <text x="25" y="550" font-size="11" font-weight="bold" fill="#475569">MAIN APP</text>
+
+        <!-- BACKGROUND -->
+        <line x1="20" y1="1470" x2="1030" y2="1470" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="6,6" />
+        <text x="25" y="1460" font-size="11" font-weight="bold" fill="#475569">BACKGROUND</text>
+
+        <!-- Bottom Partition -->
+        <line x1="20" y1="1590" x2="1030" y2="1590" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="6,6" />
+
+        <!-- Initial Node -->
+        <circle cx="310" cy="70" r="11" fill="#1E293B" />
+        <line x1="310" y1="81" x2="310" y2="100" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <!-- Splash Screen -->
+        <rect x="235" y="100" width="150" height="34" rx="6" fill="#D9E8FB" stroke="#6C8EBF" stroke-width="1.2" />
+        <text x="310" y="122" font-size="11" font-weight="bold" text-anchor="middle" fill="#0F172A">Splash screen</text>
+
+        <line x1="310" y1="134" x2="310" y2="148" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <!-- Logged in? -->
+        <polygon points="310,148 355,165 310,182 265,165" fill="#FFF2CC" stroke="#D6B656" stroke-width="1.2" />
+        <text x="310" y="169" font-size="10" text-anchor="middle" fill="#0F172A">Logged in?</text>
+
+        <!-- Yes (Skip Auth -> Main) -->
+        <path d="M 355,165 L 430,165 L 430,590 L 370,590" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="375" y="158" font-size="9.5" fill="#334155">Yes</text>
+
+        <!-- No (Auth lane) -->
+        <line x1="310" y1="182" x2="310" y2="215" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="315" y="200" font-size="9.5" fill="#334155">No</text>
+
+        <!-- Enter email & password -->
+        <rect x="225" y="215" width="170" height="32" rx="6" fill="#D9E8FB" stroke="#6C8EBF" stroke-width="1.2" />
+        <text x="310" y="235" font-size="11" text-anchor="middle" fill="#0F172A">Enter email &amp; password</text>
+
+        <!-- No account? Register -->
+        <path d="M 395,225 L 460,225" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="405" y="218" font-size="9.5" fill="#334155">No account?</text>
+        <rect x="460" y="210" width="165" height="38" rx="6" fill="#E1D5E7" stroke="#9673A6" stroke-width="1.2" />
+        <text x="542" y="226" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#0F172A">Register screen</text>
+        <text x="542" y="239" font-size="9.5" text-anchor="middle" fill="#475569">(name, email, phone, pwd)</text>
+
+        <line x1="542" y1="248" x2="542" y2="270" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <rect x="460" y="270" width="165" height="38" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="542" y="286" font-size="10" text-anchor="middle" fill="#0F172A">Create Firebase user</text>
+        <text x="542" y="299" font-size="9.5" text-anchor="middle" fill="#0F172A">+ save to DB</text>
+
+        <path d="M 542,308 L 542,590 L 370,590" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <!-- Validate inputs -->
+        <line x1="310" y1="247" x2="310" y2="265" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="235" y="265" width="150" height="32" rx="6" fill="#FFE6CC" stroke="#D79B00" stroke-width="1.2" />
+        <text x="310" y="285" font-size="11" text-anchor="middle" fill="#0F172A">Validate inputs</text>
+
+        <line x1="310" y1="297" x2="310" y2="315" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <!-- Valid? -->
+        <polygon points="310,315 345,330 310,345 275,330" fill="#FFF2CC" stroke="#D6B656" stroke-width="1.2" />
+        <text x="310" y="334" font-size="10" text-anchor="middle" fill="#0F172A">Valid?</text>
+
+        <!-- No -> Show field error -->
+        <line x1="275" y1="330" x2="210" y2="330" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="245" y="324" font-size="9.5" fill="#334155">No</text>
+        <rect x="100" y="315" width="110" height="30" rx="6" fill="#F8CECC" stroke="#B85450" stroke-width="1.2" />
+        <text x="155" y="334" font-size="10" text-anchor="middle" fill="#0F172A">Show field error</text>
+        <path d="M 100,330 L 70,330 L 70,230 L 225,230" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <!-- Yes -> Firebase signInWithEmail -->
+        <line x1="310" y1="345" x2="310" y2="375" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="315" y="360" font-size="9.5" fill="#334155">Yes</text>
+        <rect x="220" y="375" width="180" height="32" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="310" y="395" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#0F172A">Firebase signInWithEmail</text>
+
+        <line x1="310" y1="407" x2="310" y2="430" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <!-- Auth success? -->
+        <polygon points="310,430 355,448 310,466 265,448" fill="#FFF2CC" stroke="#D6B656" stroke-width="1.2" />
+        <text x="310" y="452" font-size="10" text-anchor="middle" fill="#0F172A">Auth success?</text>
+
+        <!-- Fail -> Toast: auth failed -->
+        <line x1="265" y1="448" x2="210" y2="448" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="235" y="442" font-size="9.5" fill="#334155">Fail</text>
+        <rect x="100" y="433" width="110" height="30" rx="6" fill="#F8CECC" stroke="#B85450" stroke-width="1.2" />
+        <text x="155" y="452" font-size="10" text-anchor="middle" fill="#0F172A">Toast: auth failed</text>
+        <path d="M 100,448 L 70,448 L 70,230 L 225,230" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <!-- OK -> Home screen -->
+        <line x1="310" y1="466" x2="310" y2="580" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="315" y="490" font-size="9.5" fill="#334155">OK</text>
+
+        <!-- Home screen -->
+        <rect x="220" y="580" width="180" height="36" rx="6" fill="#D9E8FB" stroke="#6C8EBF" stroke-width="1.2" />
+        <text x="310" y="597" font-size="11" font-weight="bold" text-anchor="middle" fill="#0F172A">Home screen</text>
+        <text x="310" y="609" font-size="9" text-anchor="middle" fill="#475569">(top doctors + services + stats)</text>
+
+        <!-- Bottom Nav -->
+        <line x1="310" y1="616" x2="310" y2="640" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="140" y="640" width="340" height="28" rx="6" fill="#F5F5F5" stroke="#666666" stroke-width="1.2" />
+        <text x="310" y="658" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#0F172A">Bottom Nav: Home(Browse) &bull; Print(Book) &bull; Orders &bull; Profile</text>
+
+        <!-- 4 Sub-Columns Connectors -->
+        <!-- 1. BROWSE (Purple) -->
+        <path d="M 180,668 L 180,700 L 95,700 L 95,720" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="50" y="715" font-size="10" font-weight="bold" fill="#6E2D91">BROWSE</text>
+        <rect x="30" y="720" width="130" height="30" rx="6" fill="#E1D5E7" stroke="#9673A6" stroke-width="1.2" />
+        <text x="95" y="739" font-size="10" text-anchor="middle" fill="#0F172A">Category / Doc screen</text>
+
+        <line x1="95" y1="750" x2="95" y2="770" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <polygon points="95,770 130,785 95,800 60,785" fill="#FFF2CC" stroke="#D6B656" stroke-width="1.2" />
+        <text x="95" y="789" font-size="9.5" text-anchor="middle" fill="#0F172A">Search query?</text>
+
+        <!-- No -> Load all products -->
+        <line x1="60" y1="785" x2="45" y2="785" stroke="#334155" stroke-width="1.2" />
+        <path d="M 45,785 L 45,820 L 55,820" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="40" y="778" font-size="9" fill="#334155">No</text>
+        <rect x="20" y="820" width="70" height="28" rx="6" fill="#E1D5E7" stroke="#9673A6" stroke-width="1.2" />
+        <text x="55" y="837" font-size="9" text-anchor="middle" fill="#0F172A">Load doctors</text>
+
+        <!-- Yes -> Filter / search results -->
+        <line x1="130" y1="785" x2="145" y2="785" stroke="#334155" stroke-width="1.2" />
+        <path d="M 145,785 L 145,820 L 135,820" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="140" y="778" font-size="9" fill="#334155">Yes</text>
+        <rect x="100" y="820" width="75" height="28" rx="6" fill="#E1D5E7" stroke="#9673A6" stroke-width="1.2" />
+        <text x="137" y="837" font-size="9" text-anchor="middle" fill="#0F172A">Filter results</text>
+
+        <!-- Merge to Select product/doctor -->
+        <path d="M 55,848 L 55,865 L 95,865 L 95,875" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <path d="M 137,848 L 137,865 L 95,865" fill="none" stroke="#334155" stroke-width="1.2" />
+
+        <rect x="45" y="875" width="100" height="28" rx="6" fill="#E1D5E7" stroke="#9673A6" stroke-width="1.2" />
+        <text x="95" y="893" font-size="9.5" text-anchor="middle" fill="#0F172A">Select doctor</text>
+
+        <line x1="95" y1="903" x2="95" y2="920" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="30" y="920" width="130" height="32" rx="6" fill="#E1D5E7" stroke="#9673A6" stroke-width="1.2" />
+        <text x="95" y="934" font-size="9" text-anchor="middle" fill="#0F172A">Doctor detail</text>
+        <text x="95" y="946" font-size="8.5" text-anchor="middle" fill="#475569">(bio, hospital &amp; fee)</text>
+
+        <line x1="95" y1="952" x2="95" y2="975" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="40" y="975" width="110" height="26" rx="6" fill="#FFE6CC" stroke="#D79B00" stroke-width="1.2" />
+        <text x="95" y="992" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#0F172A">&rarr; Place booking</text>
+
+        <!-- Arrow to booking form -->
+        <path d="M 150,988 L 220,988 L 220,735 L 255,735" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <!-- 2. PRINT / BOOKING (Orange) -->
+        <path d="M 310,668 L 310,720" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="260" y="715" font-size="10" font-weight="bold" fill="#D79B00">PRINT / BOOK</text>
+        <rect x="255" y="720" width="120" height="30" rx="6" fill="#FFE6CC" stroke="#D79B00" stroke-width="1.2" />
+        <text x="315" y="739" font-size="10" text-anchor="middle" fill="#0F172A">Print / Book form</text>
+
+        <line x1="315" y1="750" x2="315" y2="770" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="240" y="770" width="150" height="34" rx="6" fill="#FFE6CC" stroke="#D79B00" stroke-width="1.2" />
+        <text x="315" y="785" font-size="9.5" text-anchor="middle" fill="#0F172A">Configure booking</text>
+        <text x="315" y="797" font-size="8.5" text-anchor="middle" fill="#475569">(patient, phone, notes)</text>
+
+        <line x1="315" y1="804" x2="315" y2="825" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="250" y="825" width="130" height="28" rx="6" fill="#FFE6CC" stroke="#D79B00" stroke-width="1.2" />
+        <text x="315" y="843" font-size="9.5" text-anchor="middle" fill="#0F172A">Upload record / prescription</text>
+
+        <line x1="315" y1="853" x2="315" y2="875" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <polygon points="315,875 355,890 315,905 275,890" fill="#FFF2CC" stroke="#D6B656" stroke-width="1.2" />
+        <text x="315" y="894" font-size="9.5" text-anchor="middle" fill="#0F172A">Delivery / Mode?</text>
+
+        <!-- Pickup / Clinic -->
+        <path d="M 275,890 L 225,890 L 225,930 L 235,930" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="235" y="884" font-size="9" fill="#334155">Clinic</text>
+        <rect x="195" y="930" width="75" height="28" rx="6" fill="#FFE6CC" stroke="#D79B00" stroke-width="1.2" />
+        <text x="232" y="947" font-size="9" text-anchor="middle" fill="#0F172A">Clinic selected</text>
+
+        <!-- Video / Home delivery -->
+        <path d="M 355,890 L 395,890 L 395,930 L 385,930" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="365" y="884" font-size="9" fill="#334155">Video</text>
+        <rect x="350" y="930" width="80" height="28" rx="6" fill="#FFE6CC" stroke="#D79B00" stroke-width="1.2" />
+        <text x="390" y="947" font-size="9" text-anchor="middle" fill="#0F172A">Telemedicine</text>
+
+        <!-- Merge to pick scheduled date -->
+        <path d="M 232,958 L 232,985 L 315,985 L 315,1000" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <path d="M 390,958 L 390,985 L 315,985" fill="none" stroke="#334155" stroke-width="1.2" />
+
+        <rect x="235" y="1000" width="160" height="34" rx="6" fill="#FFE6CC" stroke="#D79B00" stroke-width="1.2" />
+        <text x="315" y="1016" font-size="9.5" text-anchor="middle" fill="#0F172A">Pick scheduled date &amp; slot</text>
+        <text x="315" y="1027" font-size="8.5" text-anchor="middle" fill="#475569">(auto-computed slots)</text>
+
+        <line x1="315" y1="1034" x2="315" y2="1055" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="245" y="1055" width="140" height="28" rx="6" fill="#FFE6CC" stroke="#D79B00" stroke-width="1.2" />
+        <text x="315" y="1073" font-size="9.5" text-anchor="middle" fill="#0F172A">Calculate total price</text>
+
+        <line x1="315" y1="1083" x2="315" y2="1105" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="240" y="1105" width="150" height="30" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="315" y="1124" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#0F172A">Submit order to Firebase/DB</text>
+
+        <line x1="315" y1="1135" x2="315" y2="1155" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <polygon points="315,1155 345,1170 315,1185 285,1170" fill="#FFF2CC" stroke="#D6B656" stroke-width="1.2" />
+        <text x="315" y="1174" font-size="9.5" text-anchor="middle" fill="#0F172A">Saved?</text>
+
+        <!-- Fail -> Show error / retry -->
+        <line x1="345" y1="1170" x2="390" y2="1170" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="355" y="1164" font-size="9" fill="#334155">Fail</text>
+        <rect x="390" y="1156" width="95" height="28" rx="6" fill="#F8CECC" stroke="#B85450" stroke-width="1.2" />
+        <text x="437" y="1173" font-size="9" text-anchor="middle" fill="#0F172A">Show error / retry</text>
+
+        <!-- OK -> Push notification -->
+        <line x1="315" y1="1185" x2="315" y2="1220" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="320" y="1205" font-size="9" fill="#334155">OK</text>
+        <rect x="235" y="1220" width="160" height="30" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="315" y="1239" font-size="9.5" text-anchor="middle" fill="#0F172A">Push notification: order placed</text>
+
+        <!-- 3. ORDERS / BOOKINGS (Green) -->
+        <path d="M 410,668 L 410,700 L 580,700 L 580,720" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="540" y="715" font-size="10" font-weight="bold" fill="#27AE60">ORDERS / BOOKINGS</text>
+        <rect x="520" y="720" width="120" height="30" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="580" y="739" font-size="10" text-anchor="middle" fill="#0F172A">My orders / bookings list</text>
+
+        <line x1="580" y1="750" x2="580" y2="775" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="530" y="775" width="100" height="28" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="580" y="793" font-size="9.5" text-anchor="middle" fill="#0F172A">Tap an order</text>
+
+        <line x1="580" y1="803" x2="580" y2="825" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="515" y="825" width="130" height="34" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="580" y="840" font-size="9.5" text-anchor="middle" fill="#0F172A">Order detail</text>
+        <text x="580" y="852" font-size="8.5" text-anchor="middle" fill="#475569">(status, specs, total)</text>
+
+        <line x1="580" y1="859" x2="580" y2="880" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <polygon points="580,880 625,895 580,910 535,895" fill="#FFF2CC" stroke="#D6B656" stroke-width="1.2" />
+        <text x="580" y="899" font-size="9.5" text-anchor="middle" fill="#0F172A">Within 5h &amp; active?</text>
+
+        <!-- Yes -> Edit order / Cancel order -->
+        <path d="M 535,895 L 485,895 L 485,845 L 495,845" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="500" y="888" font-size="9" fill="#334155">Yes</text>
+        <rect x="465" y="825" width="95" height="30" rx="6" fill="#FFE6CC" stroke="#D79B00" stroke-width="1.2" />
+        <text x="512" y="844" font-size="9" text-anchor="middle" fill="#0F172A">Edit / Cancel order</text>
+        <path d="M 512,825 L 512,735 L 375,735" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="440" y="730" font-size="8.5" fill="#334155">Edit &rarr;</text>
+
+        <!-- No -> Track order -->
+        <line x1="580" y1="910" x2="580" y2="945" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="585" y="930" font-size="9" fill="#334155">No</text>
+        <rect x="520" y="945" width="120" height="30" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="580" y="958" font-size="9" text-anchor="middle" fill="#0F172A">Track order</text>
+        <text x="580" y="970" font-size="8.5" text-anchor="middle" fill="#475569">Confirmed &rarr; Ready</text>
+
+        <line x1="580" y1="975" x2="580" y2="1005" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="515" y="1005" width="130" height="28" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="580" y="1023" font-size="9" text-anchor="middle" fill="#0F172A">Notify on status change</text>
+
+        <!-- 4. PROFILE (Red/Pink) -->
+        <path d="M 460,668 L 460,700 L 800,700 L 800,720" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <text x="760" y="715" font-size="10" font-weight="bold" fill="#C0392B">PROFILE</text>
+        <rect x="745" y="720" width="110" height="30" rx="6" fill="#F8CECC" stroke="#B85450" stroke-width="1.2" />
+        <text x="800" y="739" font-size="10" text-anchor="middle" fill="#0F172A">Profile screen</text>
+
+        <!-- Edit profile -->
+        <path d="M 770,750 L 770,780 L 725,780 L 725,795" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="680" y="795" width="90" height="30" rx="6" fill="#F8CECC" stroke="#B85450" stroke-width="1.2" />
+        <text x="725" y="808" font-size="8.5" text-anchor="middle" fill="#0F172A">Edit profile</text>
+        <text x="725" y="820" font-size="8" text-anchor="middle" fill="#475569">(name, phone)</text>
+        <line x1="725" y1="825" x2="725" y2="845" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="685" y="845" width="80" height="24" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="725" y="861" font-size="8.5" text-anchor="middle" fill="#0F172A">Save to DB</text>
+
+        <!-- Logout -->
+        <line x1="800" y1="750" x2="800" y2="795" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="780" y="795" width="45" height="28" rx="6" fill="#F8CECC" stroke="#B85450" stroke-width="1.2" />
+        <text x="802" y="813" font-size="9" text-anchor="middle" fill="#0F172A">Logout</text>
+        <line x1="802" y1="823" x2="802" y2="845" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="770" y="845" width="65" height="30" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="802" y="857" font-size="8" text-anchor="middle" fill="#0F172A">Firebase signOut</text>
+        <text x="802" y="869" font-size="8" text-anchor="middle" fill="#0F172A">&rarr; Back to Login</text>
+        <path d="M 802,875 L 802,910 L 920,910 L 920,225 L 395,225" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <!-- Edit address / medical info -->
+        <path d="M 830,750 L 830,780 L 875,780 L 875,795" fill="none" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="835" y="795" width="80" height="30" rx="6" fill="#F8CECC" stroke="#B85450" stroke-width="1.2" />
+        <text x="875" y="808" font-size="8.5" text-anchor="middle" fill="#0F172A">Edit address /</text>
+        <text x="875" y="820" font-size="8" text-anchor="middle" fill="#475569">medical info</text>
+        <line x1="875" y1="825" x2="875" y2="845" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+        <rect x="835" y="845" width="80" height="24" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="875" y="861" font-size="8.5" text-anchor="middle" fill="#0F172A">Save to DB</text>
+
+        <!-- BACKGROUND Section -->
+        <rect x="230" y="1500" width="170" height="36" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="315" y="1516" font-size="9.5" text-anchor="middle" fill="#0F172A">WorkManager: OfferWorker</text>
+        <text x="315" y="1529" font-size="8.5" text-anchor="middle" fill="#475569">(every 24 hours)</text>
+
+        <line x1="400" y1="1518" x2="450" y2="1518" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <rect x="450" y="1503" width="160" height="30" rx="6" fill="#D5E8D4" stroke="#82B366" stroke-width="1.2" />
+        <text x="530" y="1522" font-size="9" text-anchor="middle" fill="#0F172A">Push: special offer notification</text>
+
+        <!-- Final Exit -->
+        <rect x="255" y="1620" width="120" height="26" rx="6" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1" />
+        <text x="315" y="1637" font-size="9.5" text-anchor="middle" fill="#475569">Session active / exit</text>
+
+        <line x1="315" y1="1646" x2="315" y2="1670" stroke="#334155" stroke-width="1.2" marker-end="url(#arrow)" />
+
+        <circle cx="315" cy="1685" r="14" fill="none" stroke="#1E293B" stroke-width="2" />
+        <circle cx="315" cy="1685" r="8" fill="#1E293B" />
+
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+  </main>
+
+  <!-- TAB 2: ER DIAGRAM -->
+  <main id="pane-er" class="main-card tab-pane">
+    <div class="pane-toolbar">
+      <div class="pane-title">
+        <h2>Entity&ndash;Relationship (ER) Diagram</h2>
+        <p>Complete conceptual model with entities, relationships, attribute ovals, (PK)/(FK) identifiers, and cardinalities</p>
+      </div>
+      <div class="btn-group">
+        <button class="action-btn" onclick="copyDrawioXml('MedicareLk_ER_Diagram.drawio')">Copy draw.io XML</button>
+        <a class="action-btn primary" href="MedicareLk_ER_Diagram.drawio" download>Download .drawio</a>
+      </div>
+    </div>
+    <div class="diagram-container">
+      <svg width="1050" height="850" viewBox="0 0 1050 850" xmlns="http://www.w3.org/2000/svg" style="font-family: Arial, sans-serif; background: #FFFDF9;">
+        <!-- Title -->
+        <text x="40" y="45" font-family="'Times New Roman', serif" font-size="26" font-weight="bold" fill="#1E293B">ER Diagram</text>
+
+        <!-- DEFINE STYLES -->
+        <defs>
+          <style>
+            .ent { fill: #1B365D; stroke: #0F2038; stroke-width: 1.5; }
+            .ent-txt { fill: #FFFFFF; font-weight: bold; font-size: 13px; text-anchor: middle; }
+            .rel { fill: #1B365D; stroke: #0F2038; stroke-width: 1.5; }
+            .rel-txt { fill: #FFFFFF; font-weight: bold; font-size: 9.5px; text-anchor: middle; }
+            .attr { fill: #1B365D; stroke: #0F2038; stroke-width: 1.2; }
+            .attr-txt { fill: #FFFFFF; font-size: 9px; text-anchor: middle; }
+            .er-line { stroke: #334155; stroke-width: 1.2; fill: none; }
+            .card-txt { fill: #0F172A; font-weight: bold; font-size: 11px; }
+          </style>
+        </defs>
+
+        <!-- LINES CONNECTING ATTRIBUTES TO ENTITIES -->
+        <!-- User lines -->
+        <line x1="170" y1="260" x2="170" y2="200" class="er-line" />
+        <line x1="170" y1="260" x2="80" y2="245" class="er-line" />
+        <line x1="170" y1="260" x2="80" y2="285" class="er-line" />
+        <line x1="170" y1="260" x2="95" y2="330" class="er-line" />
+        <line x1="170" y1="260" x2="170" y2="350" class="er-line" />
+        <line x1="170" y1="260" x2="270" y2="210" class="er-line" />
+
+        <!-- User Entity -->
+        <rect x="110" y="245" width="120" height="38" class="ent" />
+        <text x="170" y="269" class="ent-txt">User</text>
+
+        <!-- User Attributes -->
+        <ellipse cx="170" cy="190" rx="36" ry="14" class="attr" /><text x="170" y="194" class="attr-txt">id (PK)</text>
+        <ellipse cx="80" cy="245" rx="32" ry="13" class="attr" /><text x="80" y="249" class="attr-txt">name</text>
+        <ellipse cx="80" cy="285" rx="32" ry="13" class="attr" /><text x="80" y="289" class="attr-txt">email</text>
+        <ellipse cx="95" cy="330" rx="30" ry="13" class="attr" /><text x="95" y="334" class="attr-txt">phone</text>
+        <ellipse cx="170" cy="350" rx="34" ry="13" class="attr" /><text x="170" y="354" class="attr-txt">address</text>
+        <ellipse cx="270" cy="205" rx="42" ry="13" class="attr" /><text x="270" y="209" class="attr-txt">profileImgUrl</text>
+
+        <!-- Product / Doctor lines -->
+        <line x1="560" y1="240" x2="415" y2="185" class="er-line" />
+        <line x1="560" y1="240" x2="435" y2="225" class="er-line" />
+        <line x1="560" y1="240" x2="430" y2="270" class="er-line" />
+        <line x1="560" y1="240" x2="475" y2="295" class="er-line" />
+        <line x1="560" y1="240" x2="540" y2="175" class="er-line" />
+        <line x1="560" y1="240" x2="620" y2="175" class="er-line" />
+
+        <!-- Doctor Entity -->
+        <rect x="500" y="225" width="120" height="38" class="ent" />
+        <text x="560" y="249" class="ent-txt">Product</text>
+
+        <!-- Doctor Attributes -->
+        <ellipse cx="415" cy="185" rx="32" ry="13" class="attr" /><text x="415" y="189" class="attr-txt">id (PK)</text>
+        <ellipse cx="435" cy="225" rx="30" ry="13" class="attr" /><text x="435" y="229" class="attr-txt">name</text>
+        <ellipse cx="430" cy="270" rx="36" ry="13" class="attr" /><text x="430" y="274" class="attr-txt">description</text>
+        <ellipse cx="475" cy="295" rx="28" ry="13" class="attr" /><text x="475" y="299" class="attr-txt">price</text>
+        <ellipse cx="540" cy="175" rx="32" ry="13" class="attr" /><text x="540" y="179" class="attr-txt">imageUrl</text>
+        <ellipse cx="620" cy="175" rx="36" ry="13" class="attr" /><text x="620" y="179" class="attr-txt">category_id</text>
+
+        <!-- Sizes / Availability -->
+        <line x1="560" y1="225" x2="480" y2="135" class="er-line" />
+        <text x="545" y="200" class="card-txt">1</text>
+        <text x="490" y="150" class="card-txt">N</text>
+        <rect x="420" y="115" width="120" height="34" class="ent" />
+        <text x="480" y="137" class="ent-txt">Product_Sizes</text>
+        <line x1="480" y1="115" x2="400" y2="100" class="er-line" />
+        <line x1="480" y1="115" x2="480" y2="90" class="er-line" />
+        <line x1="480" y1="115" x2="560" y2="100" class="er-line" />
+        <ellipse cx="400" cy="100" rx="30" ry="13" class="attr" /><text x="400" y="104" class="attr-txt">id (PK)</text>
+        <ellipse cx="480" cy="90" rx="42" ry="13" class="attr" /><text x="480" y="94" class="attr-txt">product_id (FK)</text>
+        <ellipse cx="560" cy="100" rx="26" ry="13" class="attr" /><text x="560" y="104" class="attr-txt">size</text>
+
+        <!-- Materials / Hospital Branch -->
+        <line x1="560" y1="225" x2="720" y2="135" class="er-line" />
+        <text x="585" y="200" class="card-txt">1</text>
+        <text x="710" y="150" class="card-txt">N</text>
+        <rect x="660" y="115" width="130" height="34" class="ent" />
+        <text x="725" y="137" class="ent-txt">ProductMaterials</text>
+        <line x1="725" y1="115" x2="725" y2="90" class="er-line" />
+        <line x1="725" y1="115" x2="815" y2="100" class="er-line" />
+        <line x1="725" y1="135" x2="765" y2="185" class="er-line" />
+        <ellipse cx="725" cy="90" rx="42" ry="13" class="attr" /><text x="725" y="94" class="attr-txt">product_id (FK)</text>
+        <ellipse cx="815" cy="100" rx="30" ry="13" class="attr" /><text x="815" y="104" class="attr-txt">id (PK)</text>
+        <ellipse cx="765" cy="185" rx="30" ry="13" class="attr" /><text x="765" y="189" class="attr-txt">material</text>
+
+        <!-- Category Entity & Belongs To -->
+        <line x1="620" y1="244" x2="700" y2="265" class="er-line" />
+        <text x="640" y="248" class="card-txt">N</text>
+        <polygon points="730,240 765,265 730,290 695,265" class="rel" />
+        <text x="730" y="262" class="rel-txt">BELONGS</text>
+        <text x="730" y="272" class="rel-txt">TO</text>
+        <line x1="765" y1="265" x2="800" y2="320" class="er-line" />
+        <text x="775" y="300" class="card-txt">1</text>
+        <rect x="750" y="320" width="110" height="36" class="ent" />
+        <text x="805" y="343" class="ent-txt">Category</text>
+        <line x1="805" y1="356" x2="690" y2="385" class="er-line" />
+        <line x1="805" y1="356" x2="760" y2="395" class="er-line" />
+        <line x1="805" y1="356" x2="850" y2="395" class="er-line" />
+        <ellipse cx="690" cy="385" rx="28" ry="13" class="attr" /><text x="690" y="389" class="attr-txt">name</text>
+        <ellipse cx="760" cy="395" rx="30" ry="13" class="attr" /><text x="760" y="399" class="attr-txt">imageUrl</text>
+        <ellipse cx="850" cy="395" rx="30" ry="13" class="attr" /><text x="850" y="399" class="attr-txt">id (PK)</text>
+
+        <!-- User PLACES Order -->
+        <line x1="170" y1="283" x2="360" y2="400" class="er-line" />
+        <text x="210" y="305" class="card-txt">1</text>
+        <polygon points="360,375 395,400 360,425 325,400" class="rel" />
+        <text x="360" y="404" class="rel-txt">PLACES</text>
+        <line x1="395" y1="400" x2="520" y2="490" class="er-line" />
+        <text x="440" y="440" class="card-txt">N</text>
+
+        <!-- Product CONTAINS Order -->
+        <line x1="560" y1="263" x2="560" y2="380" class="er-line" />
+        <text x="565" y="295" class="card-txt">N</text>
+        <polygon points="560,380 595,405 560,430 525,405" class="rel" />
+        <text x="560" y="409" class="rel-txt">CONTAINS</text>
+        <line x1="560" y1="430" x2="560" y2="490" class="er-line" />
+        <text x="565" y="465" class="card-txt">1</text>
+
+        <!-- Order Entity (Appointment) -->
+        <rect x="500" y="490" width="120" height="40" class="ent" />
+        <text x="560" y="515" class="ent-txt">Order</text>
+
+        <!-- Order Attributes -->
+        <line x1="560" y1="490" x2="505" y2="435" class="er-line" />
+        <line x1="560" y1="490" x2="615" y2="435" class="er-line" />
+        <line x1="560" y1="490" x2="675" y2="445" class="er-line" />
+        <line x1="500" y1="510" x2="435" y2="475" class="er-line" />
+        <line x1="500" y1="510" x2="385" y2="525" class="er-line" />
+        <line x1="500" y1="520" x2="400" y2="565" class="er-line" />
+        <line x1="500" y1="530" x2="475" y2="605" class="er-line" />
+        <line x1="620" y1="510" x2="695" y2="480" class="er-line" />
+        <line x1="620" y1="515" x2="715" y2="525" class="er-line" />
+        <line x1="620" y1="525" x2="715" y2="565" class="er-line" />
+        <line x1="600" y1="530" x2="675" y2="605" class="er-line" />
+
+        <ellipse cx="505" cy="435" rx="38" ry="13" class="attr" /><text x="505" y="439" class="attr-txt">scheduled_date</text>
+        <ellipse cx="615" cy="435" rx="32" ry="13" class="attr" /><text x="615" y="439" class="attr-txt">created_at</text>
+        <ellipse cx="675" cy="445" rx="30" ry="13" class="attr" /><text x="675" y="449" class="attr-txt">design_url</text>
+        <ellipse cx="435" cy="475" rx="30" ry="13" class="attr" /><text x="435" y="479" class="attr-txt">id (PK)</text>
+        <ellipse cx="385" cy="525" rx="30" ry="13" class="attr" /><text x="385" y="529" class="attr-txt">user_id</text>
+        <ellipse cx="400" cy="565" rx="34" ry="13" class="attr" /><text x="400" y="569" class="attr-txt">product_id?</text>
+        <ellipse cx="475" cy="605" rx="34" ry="13" class="attr" /><text x="475" y="609" class="attr-txt">category_id</text>
+        <ellipse cx="695" cy="480" rx="34" ry="13" class="attr" /><text x="695" y="484" class="attr-txt">instructions</text>
+        <ellipse cx="715" cy="525" rx="26" ry="13" class="attr" /><text x="715" y="529" class="attr-txt">size*</text>
+        <ellipse cx="715" cy="565" rx="30" ry="13" class="attr" /><text x="715" y="569" class="attr-txt">material*</text>
+        <ellipse cx="675" cy="605" rx="36" ry="13" class="attr" /><text x="675" y="609" class="attr-txt">total_amount</text>
+
+        <!-- Notification & RECEIVES / TRIGGERS -->
+        <line x1="170" y1="283" x2="170" y2="400" class="er-line" />
+        <text x="175" y="315" class="card-txt">1</text>
+        <polygon points="170,400 205,420 170,440 135,420" class="rel" />
+        <text x="170" y="424" class="rel-txt">RECEIVES</text>
+        <line x1="170" y1="440" x2="170" y2="475" class="er-line" />
+        <text x="175" y="460" class="card-txt">N</text>
+
+        <rect x="115" y="475" width="110" height="36" class="ent" />
+        <text x="170" y="498" class="ent-txt">Notification</text>
+
+        <!-- Triggers from Order to Notification -->
+        <line x1="500" y1="510" x2="315" y2="495" class="er-line" />
+        <text x="470" y="500" class="card-txt">1</text>
+        <polygon points="280,480 315,495 280,510 245,495" class="rel" />
+        <text x="280" y="499" class="rel-txt">TRIGGERS</text>
+        <line x1="245" y1="495" x2="225" y2="495" class="er-line" />
+        <text x="235" y="485" class="card-txt">N</text>
+
+        <!-- Notification Attributes -->
+        <line x1="170" y1="475" x2="110" y2="425" class="er-line" />
+        <line x1="115" y1="490" x2="55" y2="455" class="er-line" />
+        <line x1="115" y1="500" x2="55" y2="495" class="er-line" />
+        <line x1="125" y1="511" x2="75" y2="535" class="er-line" />
+        <line x1="170" y1="511" x2="155" y2="555" class="er-line" />
+        <line x1="210" y1="511" x2="220" y2="550" class="er-line" />
+
+        <ellipse cx="110" cy="425" rx="30" ry="13" class="attr" /><text x="110" y="429" class="attr-txt">id (PK)</text>
+        <ellipse cx="55" cy="455" rx="36" ry="13" class="attr" /><text x="55" y="459" class="attr-txt">user_id (FK)</text>
+        <ellipse cx="55" cy="495" rx="38" ry="13" class="attr" /><text x="55" y="499" class="attr-txt">order_id (FK)</text>
+        <ellipse cx="75" cy="535" rx="30" ry="13" class="attr" /><text x="75" y="539" class="attr-txt">sent_at</text>
+        <ellipse cx="155" cy="555" rx="30" ry="13" class="attr" /><text x="155" y="559" class="attr-txt">message</text>
+        <ellipse cx="220" cy="550" rx="26" ry="13" class="attr" /><text x="220" y="554" class="attr-txt">title</text>
+
+        <!-- HAS STATUS & OrderStatus -->
+        <line x1="500" y1="530" x2="350" y2="615" class="er-line" />
+        <text x="440" y="570" class="card-txt">N</text>
+        <polygon points="350,595 385,615 350,635 315,615" class="rel" />
+        <text x="350" y="619" class="rel-txt">HAS STATUS</text>
+        <line x1="315" y1="615" x2="250" y2="655" class="er-line" />
+        <text x="270" y="635" class="card-txt">1</text>
+
+        <rect x="120" y="650" width="120" height="36" class="ent" />
+        <text x="180" y="673" class="ent-txt">OrderStatus</text>
+
+        <!-- OrderStatus Attributes -->
+        <line x1="120" y1="660" x2="55" y2="640" class="er-line" />
+        <line x1="120" y1="675" x2="55" y2="700" class="er-line" />
+        <line x1="140" y1="686" x2="80" y2="740" class="er-line" />
+        <line x1="180" y1="686" x2="180" y2="745" class="er-line" />
+        <line x1="220" y1="686" x2="275" y2="740" class="er-line" />
+
+        <ellipse cx="55" cy="640" rx="30" ry="13" class="attr" /><text x="55" y="644" class="attr-txt">id (PK)</text>
+        <ellipse cx="55" cy="700" rx="28" ry="13" class="attr" /><text x="55" y="704" class="attr-txt">name</text>
+        <ellipse cx="80" cy="740" rx="30" ry="13" class="attr" /><text x="80" y="744" class="attr-txt">Processing</text>
+        <ellipse cx="180" cy="745" rx="28" ry="13" class="attr" /><text x="180" y="749" class="attr-txt">Printing</text>
+        <ellipse cx="275" cy="740" rx="26" ry="13" class="attr" /><text x="275" y="744" class="attr-txt">Ready</text>
+
+        <!-- HAS DELIVERY & DeliveryType -->
+        <line x1="560" y1="530" x2="560" y2="615" class="er-line" />
+        <text x="565" y="565" class="card-txt">N</text>
+        <polygon points="560,615 595,635 560,655 525,635" class="rel" />
+        <text x="560" y="639" class="rel-txt">HAS DELIVERY</text>
+        <line x1="560" y1="655" x2="560" y2="700" class="er-line" />
+        <text x="565" y="680" class="card-txt">1</text>
+
+        <rect x="500" y="700" width="120" height="36" class="ent" />
+        <text x="560" y="723" class="ent-txt">DeliveryType</text>
+
+        <!-- DeliveryType Attributes -->
+        <line x1="500" y1="718" x2="440" y2="718" class="er-line" />
+        <line x1="520" y1="736" x2="495" y2="775" class="er-line" />
+        <line x1="560" y1="736" x2="585" y2="780" class="er-line" />
+        <line x1="600" y1="736" x2="680" y2="775" class="er-line" />
+
+        <ellipse cx="440" cy="718" rx="30" ry="13" class="attr" /><text x="440" y="722" class="attr-txt">id (PK)</text>
+        <ellipse cx="495" cy="775" rx="28" ry="13" class="attr" /><text x="495" y="779" class="attr-txt">name</text>
+        <ellipse cx="585" cy="780" rx="42" ry="13" class="attr" /><text x="585" y="784" class="attr-txt">Home Delivery</text>
+        <ellipse cx="680" cy="775" rx="30" ry="13" class="attr" /><text x="680" y="779" class="attr-txt">Pickup</text>
+
+      </svg>
+    </div>
+  </main>
+
+  <!-- TAB 3: NORMALIZED RELATIONAL SCHEMAS -->
+  <main id="pane-schema" class="main-card tab-pane">
+    <div class="pane-toolbar">
+      <div class="pane-title">
+        <h2>Normalized Relational Schemas (3NF)</h2>
+        <p>Third normal form database structure with underlined primary keys, dashed underlined foreign keys, and referential integrity arrows</p>
+      </div>
+      <div class="btn-group">
+        <button class="action-btn" onclick="copyDrawioXml('MedicareLk_Normalized_Schemas.drawio')">Copy draw.io XML</button>
+        <a class="action-btn primary" href="MedicareLk_Normalized_Schemas.drawio" download>Download .drawio</a>
+      </div>
+    </div>
+    <div class="diagram-container">
+      <svg width="1050" height="720" viewBox="0 0 1050 720" xmlns="http://www.w3.org/2000/svg" style="font-family: Arial, sans-serif;">
+        <!-- Title -->
+        <text x="30" y="40" font-family="'Times New Roman', serif" font-size="26" font-weight="bold" fill="#1E293B">Normalized Relational Schemas</text>
+
+        <defs>
+          <style>
+            .tbl-title { font-size: 13px; font-weight: bold; fill: #0F172A; }
+            .cell-box { fill: #FFFFFF; stroke: #475569; stroke-width: 1; }
+            .cell-txt { font-size: 11px; fill: #0F172A; text-anchor: middle; }
+            .pk-txt { font-size: 11px; fill: #0F172A; text-anchor: middle; text-decoration: underline; font-weight: bold; }
+            .ref-arrow { fill: none; stroke: #475569; stroke-width: 1.2; marker-end: url(#schema-arrow); }
+          </style>
+          <marker id="schema-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569"/>
+          </marker>
+        </defs>
+
+        <!-- 1. USER TABLE -->
+        <text x="40" y="90" class="tbl-title">User</text>
+        <g id="svg_tbl_user">
+          <rect x="40" y="105" width="85" height="34" class="cell-box" />
+          <text x="82" y="126" class="pk-txt">User_ID</text>
+
+          <rect x="125" y="105" width="85" height="34" class="cell-box" />
+          <text x="167" y="126" class="cell-txt">Name</text>
+
+          <rect x="210" y="105" width="85" height="34" class="cell-box" />
+          <text x="252" y="126" class="cell-txt">Email</text>
+
+          <rect x="295" y="105" width="85" height="34" class="cell-box" />
+          <text x="337" y="126" class="cell-txt">Phone</text>
+
+          <rect x="380" y="105" width="85" height="34" class="cell-box" />
+          <text x="422" y="126" class="cell-txt">Address</text>
+        </g>
+
+        <!-- 2. CATEGORY TABLE -->
+        <text x="40" y="180" class="tbl-title">Category</text>
+        <g id="svg_tbl_cat">
+          <rect x="40" y="195" width="105" height="34" class="cell-box" />
+          <text x="92" y="216" class="pk-txt">Category_ID</text>
+
+          <rect x="145" y="195" width="85" height="34" class="cell-box" />
+          <text x="187" y="216" class="cell-txt">Name</text>
+
+          <rect x="230" y="195" width="85" height="34" class="cell-box" />
+          <text x="272" y="216" class="cell-txt">Image_URL</text>
+        </g>
+
+        <!-- 3. PRODUCT TABLE -->
+        <text x="40" y="270" class="tbl-title">Product</text>
+        <g id="svg_tbl_prod">
+          <rect x="40" y="285" width="85" height="34" class="cell-box" />
+          <text x="82" y="306" class="pk-txt">Product_ID</text>
+
+          <rect x="125" y="285" width="95" height="34" class="cell-box" />
+          <text x="172" y="306" class="cell-txt" style="text-decoration: underline dashed;">Category_ID</text>
+
+          <rect x="220" y="285" width="85" height="34" class="cell-box" />
+          <text x="262" y="306" class="cell-txt">Name</text>
+
+          <rect x="305" y="285" width="90" height="34" class="cell-box" />
+          <text x="350" y="306" class="cell-txt">Description</text>
+
+          <rect x="395" y="285" width="85" height="34" class="cell-box" />
+          <text x="437" y="306" class="cell-txt">Base_Price</text>
+
+          <rect x="480" y="285" width="85" height="34" class="cell-box" />
+          <text x="522" y="306" class="cell-txt">Image_URL</text>
+        </g>
+
+        <!-- 4. PRODUCT_MATERIAL TABLE -->
+        <text x="40" y="365" class="tbl-title">Product_Material</text>
+        <g id="svg_tbl_mat">
+          <rect x="40" y="380" width="85" height="34" class="cell-box" />
+          <text x="82" y="401" class="cell-txt" style="text-decoration: underline dashed;">Product_ID</text>
+
+          <rect x="125" y="380" width="85" height="34" class="cell-box" />
+          <text x="167" y="401" class="pk-txt">Material</text>
+        </g>
+
+        <!-- 5. PRODUCT_SIZE TABLE -->
+        <text x="40" y="460" class="tbl-title">Product_Size</text>
+        <g id="svg_tbl_size">
+          <rect x="40" y="475" width="85" height="34" class="cell-box" />
+          <text x="82" y="496" class="cell-txt" style="text-decoration: underline dashed;">Product_ID</text>
+
+          <rect x="125" y="475" width="85" height="34" class="cell-box" />
+          <text x="167" y="496" class="cell-txt">Size</text>
+        </g>
+
+        <!-- 6. ORDER TABLE (Bottom spanning) -->
+        <text x="40" y="555" class="tbl-title">Order</text>
+        <g id="svg_tbl_order">
+          <rect x="40" y="570" width="85" height="34" class="cell-box" />
+          <text x="82" y="591" class="pk-txt">Order_ID</text>
+
+          <rect x="125" y="570" width="85" height="34" class="cell-box" />
+          <text x="167" y="591" class="cell-txt" style="text-decoration: underline dashed;">User_ID</text>
+
+          <rect x="210" y="570" width="85" height="34" class="cell-box" />
+          <text x="252" y="591" class="cell-txt" style="text-decoration: underline dashed;">Product_ID</text>
+
+          <rect x="295" y="570" width="85" height="34" class="cell-box" />
+          <text x="337" y="591" class="cell-txt">Quantity</text>
+
+          <rect x="380" y="570" width="85" height="34" class="cell-box" />
+          <text x="422" y="591" class="cell-txt">Total_Amount</text>
+
+          <rect x="465" y="570" width="75" height="34" class="cell-box" />
+          <text x="502" y="591" class="cell-txt">Status</text>
+
+          <rect x="540" y="570" width="85" height="34" class="cell-box" />
+          <text x="582" y="591" class="cell-txt">Sel_Material</text>
+
+          <rect x="625" y="570" width="75" height="34" class="cell-box" />
+          <text x="662" y="591" class="cell-txt">Sel_Size</text>
+
+          <rect x="700" y="570" width="85" height="34" class="cell-box" />
+          <text x="742" y="591" class="cell-txt">Delivery_Type</text>
+
+          <rect x="785" y="570" width="85" height="34" class="cell-box" />
+          <text x="827" y="591" class="cell-txt">Created_At</text>
+        </g>
+
+        <!-- ORTHOGONAL REFERENTIAL INTEGRITY ARROWS -->
+        <!-- Category_ID in Product -> Category.Category_ID -->
+        <path d="M 172,285 L 172,255 L 110,255 L 110,235" class="ref-arrow" />
+
+        <!-- Product_ID in Product_Material -> Product.Product_ID -->
+        <path d="M 40,397 L 30,397 L 30,319 L 40,319" class="ref-arrow" />
+
+        <!-- Product_ID in Product_Size -> Product.Product_ID -->
+        <path d="M 82,475 L 82,440 L 250,440 L 250,340 L 85,340 L 85,325" class="ref-arrow" />
+
+        <!-- User_ID in Order -> User.User_ID -->
+        <path d="M 167,570 L 167,540 L 15,540 L 15,122 L 35,122" class="ref-arrow" />
+
+        <!-- Product_ID in Order -> Product.Product_ID -->
+        <path d="M 252,570 L 252,520 L 275,520 L 275,340 L 85,340 L 85,325" class="ref-arrow" />
+
+      </svg>
+    </div>
+  </main>
+
+  <div id="toast" class="toast">Copied to clipboard!</div>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      document.getElementById('pane-' + tabId).classList.add('active');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function copyDrawioXml(filename) {
+      fetch(filename)
+        .then(response => response.text())
+        .then(text => {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast('draw.io XML copied! In draw.io, go to Arrange -> Insert -> Advanced -> From Text to paste.');
+          });
+        })
+        .catch(err => {
+          showToast('Could not auto-copy file. Please download the .drawio file directly.');
+        });
+    }
+  </script>
+</body>
+</html>
